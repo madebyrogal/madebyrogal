@@ -11,3 +11,6 @@
 
 ## Change permission to cache and log:
  ```sh fixperms```
+
+## Build assets - run gulp
+```gulp build```
