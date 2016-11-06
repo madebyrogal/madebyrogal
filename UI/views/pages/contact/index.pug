@@ -1,0 +1,24 @@
+include ../default/_menu.pug
+section.contact
+    div.container
+        h1 Contact
+        div#google-map.mb30
+            div.map-overlay(onClick="style.pointerEvents='none'")
+            iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110426.06787302611!2d16.866775790259044!3d52.2961407060589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470456c263e88481%3A0x58966fe8a6ee876b!2sWaniliowa+46%2C+62-023+Kamionki!5e0!3m2!1spl!2spl!4v1478441713547" allowfullscreen)
+        div.row
+            div.col-md-6
+                p 
+                    h2 Madebyrogal - Tomasz Rogalski
+                    |<br/> ul. Waniliowa 46
+                    |<br/> 62-023 Kamionki
+                p NIP: 8133186798
+                    |<br/> REGON: 365684866
+            div.col-md-6
+                ul.contact-type
+                    li
+                        i.fa.fa-mobile 
+                        a(href="tel:+48608651322" title="Mobile phone") +48608651322
+                    li
+                        i.fa.fa-envelope
+                        a(href="mailto:info@madebyrogal.com") info@madebyrogal.com
+include ../default/footer.pug

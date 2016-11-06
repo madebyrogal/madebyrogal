@@ -1,3 +1,3 @@
-app.controller('ContactController', ['$scope', function($scope) {
-  
-}]);
+app.controller('ContactController', ['$rootScope', function ($rootScope) {
+        $rootScope.siteTitle = 'Madebyrogal - Contact';
+    }]);
