@@ -1,0 +1,31 @@
+.what-people-say-box{
+    color: @colorWhite;
+    padding-top: 80px;
+    padding-bottom: 35px;
+    text-align: center;
+
+    @media(min-width: @screen-sm-min){
+        padding-right: 45px;
+    }
+
+    i{
+        font-size: 100px;
+    }
+    
+    h3{
+        margin-bottom: 75px;
+    }
+
+    p{
+        font-size: 15px;
+        
+        &.sygnature{
+            font-weight: bold;
+        }
+    }
+    
+    .button{
+        .button(@colorGreen);
+        margin-top: 25px;
+    }
+}

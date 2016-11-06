@@ -1,0 +1,51 @@
+.project-planer{
+    background-color: @colorGreyLight3;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    text-align: center;
+
+    .project-tag{
+        display: inline-block;
+        color: @colorPurpure;
+        font-weight: bold;
+        font-size: 18px;
+        width: 279px;
+        height: 274px;
+        background-image: url('../../assets/images/project-planer-bg.png');
+
+        a{
+            display: block;
+            color: @colorPurpure;
+
+            &:active, &:hover {
+                color: @colorPurpure;
+                text-decoration: none;
+            }
+
+            i{
+                display: block;
+                font-size: 100px;
+                margin-top: 60px;
+                margin-bottom: 20px;
+            }
+        }
+
+    }
+
+    article{
+        h3{
+            font-weight: bold;
+        }
+
+        p {
+            color: @colorGreyLight4;
+            font-size: 13px;
+
+            &.project-planer-link{
+                margin-top: 45px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        base(href="/")
+        block title 
+            title MadeByRogal
+        include pages/default/_header-include.pug
+    body
+        section.main(ng-view)
+        include pages/default/_footer-include.pug
+        block footer
+            include pages/default/footer.pug

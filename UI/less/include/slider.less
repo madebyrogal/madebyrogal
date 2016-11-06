@@ -1,0 +1,51 @@
+.flexslider{
+    background-color: transparent;
+    margin: 0;
+    padding: 0 12%;
+    border: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: @colorWhite;
+
+    .slides {
+        li {
+            text-align: left;
+            font-size: 36px;
+            line-height: 46px;
+            
+            p {
+                margin-bottom: 40px;
+            }
+        }
+    }
+
+
+    .custom-navigation {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        a {
+            color: @colorGreenDark;
+            font-size: 100px;
+
+            &:hover {
+                color: @colorWhite;
+            }
+        }
+
+        .flex-prev {
+            float: left;
+
+
+        }
+
+        .flex-next {
+            float: right;
+        }
+    }
+}
+

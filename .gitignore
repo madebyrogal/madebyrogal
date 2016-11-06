@@ -12,8 +12,14 @@
 !var/SymfonyRequirements.php
 /app/config/parameters.yml
 
+# ASSETS
+/web/css/
+/web/js/
+/web/pages/
+
 # VENDORS
 /vendor/
+/node_modules/
 
 # BUNDLES
 /web/bundles/
