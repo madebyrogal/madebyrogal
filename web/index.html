@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="madebyrogal">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/">
-    <title>MadeByRogal</title>
+    <title>{{siteTitle}}</title>
     <link href="css/main.css" type="text/css" rel="stylesheet" media="screen">
   </head>
   <body>
     <section class="main" ng-view></section>
     <script src="js/app.js"></script>
-    <footer><a href="tel:+48608651322" title="phone to madebyrogal">+48 608 651 322 / </a><a href="mailto:info@madebyrogal.com" title="info@madebyrogal.com">info@madebyrogal.com </a>/ © madeByRogal {{footerDate | date:'yyyy'}}</footer>
   </body>
 </html>

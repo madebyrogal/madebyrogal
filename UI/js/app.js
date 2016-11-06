@@ -51,5 +51,6 @@ app.config(['$routeProvider', '$locationProvider',
 app.run(['$rootScope',
     function($rootScope) {
         $rootScope.footerDate = new Date();
+        $rootScope.siteTitle = 'MadeByRogal'
     }
 ]);
