@@ -1,21 +1,5 @@
-div.row.mb30
-    article(ng-repeat="gallery in galleries").col-sm-4
-        div.img-bar
-        img(src="{{img.thumb}}" ng-repeat="img in gallery" ng-init="innerFirst = $first" ng-show="innerFirst")
-    article.col-sm-4
-        div.img-bar
-        img(src="/images/img355-238.jpg" alt="Project title").img-responsive
-    article.col-sm-4
-        div.img-bar
-        img(src="/images/img355-238.jpg" alt="Project title").img-responsive
 div.row
-    article.col-sm-4
+    article(ng-repeat="gallery in galleries" ng-init="articleIndex = $index").col-sm-4.mb30
         div.img-bar
-        img(src="/images/img355-238.jpg" alt="Project title").img-responsive
-    article.col-sm-4
-        div.img-bar
-        img(src="/images/img355-238.jpg" alt="Project title").img-responsive
-    article.col-sm-4
-        div.img-bar
-        img(src="/images/img355-238.jpg" alt="Project title").img-responsive
-
+        a(href="{{img.file}}" data-lightbox="gallery_{{articleIndex}}" data-title="{{img.title}}" ng-repeat="img in gallery" ng-init="innerFirst = $first" ng-show="innerFirst")
+            img(src="{{img.thumb}}" alt="{{img.title}}")

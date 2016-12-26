@@ -17,8 +17,122 @@
                     "thumb": "/images/realization/poradnik-okulistyczny/thumb/PoradnikOkulistyczny_lek_02.jpg",
                     "title": "Poradnia okulistyczna"
                 }
+            ],
+            [
+                {
+                    "file": "/images/realization/fosidal/Fosidal_quiz_index.jpg",
+                    "thumb": "/images/realization/fosidal/thumb/Fosidal_quiz_index.jpg",
+                    "title": "Fosidal - konkurs"
+                },
+                {
+                    "file": "/images/realization/fosidal/Fosidal_quiz_pytanie01.jpg",
+                    "thumb": "/images/realization/fosidal/thumb/Fosidal_quiz_pytanie01.jpg",
+                    "title": "Fosidal - konkurs"
+                },
+                {
+                    "file": "/images/realization/fosidal/Fosidal_quiz_rejestracja.jpg",
+                    "thumb": "/images/realization/fosidal/thumb/Fosidal_quiz_rejestracja.jpg",
+                    "title": "Fosidal - konkurs"
+                },
+                {
+                    "file": "/images/realization/fosidal/Fosidal_quiz_slajd02.jpg",
+                    "thumb": "/images/realization/fosidal/thumb/Fosidal_quiz_slajd02.jpg",
+                    "title": "Fosidal - konkurs"
+                },
+                {
+                    "file": "/images/realization/fosidal/Fosidal_quiz_slajd06.jpg",
+                    "thumb": "/images/realization/fosidal/thumb/Fosidal_quiz_slajd06.jpg",
+                    "title": "Fosidal - konkurs"
+                }
+            ],
+            [
+                {
+                    "file": "/images/realization/napromed/home_slide_1.jpg",
+                    "thumb": "/images/realization/napromed/thumb/home_slide_1.jpg",
+                    "title": "Napromed - Naprotechnologia"
+                },
+                {
+                    "file": "/images/realization/napromed/home_slide_2.jpg",
+                    "thumb": "/images/realization/napromed/thumb/home_slide_2.jpg",
+                    "title": "Napromed - Naprotechnologia"
+                },
+                {
+                    "file": "/images/realization/napromed/menu_active.jpg",
+                    "thumb": "/images/realization/napromed/thumb/menu_active.jpg",
+                    "title": "Napromed - Naprotechnologia"
+                },
+                {
+                    "file": "/images/realization/napromed/strona_wysiwyg.jpg",
+                    "thumb": "/images/realization/napromed/thumb/strona_wysiwyg.jpg",
+                    "title": "Napromed - Naprotechnologia"
+                }
+            ],
+            [
+                {
+                    "file": "/images/realization/womm-strona/_LPM_homepage_00.jpg",
+                    "thumb": "/images/realization/womm-strona/thumb/_LPM_homepage_00.jpg",
+                    "title": "Akcja promocyjna LPM - Blog"
+                },
+                {
+                    "file": "/images/realization/womm-strona/_LPM_zalogowana_00.jpg",
+                    "thumb": "/images/realization/womm-strona/thumb/_LPM_zalogowana_00.jpg",
+                    "title": "Akcja promocyjna LPM - Blog"
+                },
+                {
+                    "file": "/images/realization/womm-strona/pomoc.jpg",
+                    "thumb": "/images/realization/womm-strona/thumb/pomoc.jpg",
+                    "title": "Akcja promocyjna LPM - Blog"
+                }
+            ],
+            [
+                {
+                    "file": "/images/realization/womm-apka/3.jpg",
+                    "thumb": "/images/realization/womm-apka/thumb/3.jpg",
+                    "title": "Akcja promocyjna LPM - Aplikacja FB"
+                },
+                {
+                    "file": "/images/realization/womm-apka/2.jpg",
+                    "thumb": "/images/realization/womm-apka/thumb/2.jpg",
+                    "title": "Akcja promocyjna LPM - Aplikacja FB"
+                },
+                {
+                    "file": "/images/realization/womm-apka/1.jpg",
+                    "thumb": "/images/realization/womm-apka/thumb/1.jpg",
+                    "title": "Akcja promocyjna LPM - Aplikacja FB"
+                },
+                {
+                    "file": "/images/realization/womm-apka/17.jpg",
+                    "thumb": "/images/realization/womm-apka/thumb/17.jpg",
+                    "title": "Akcja promocyjna LPM - Aplikacja FB"
+                }
+            ],
+            [
+                {
+                    "file": "/images/realization/jolmar/1.Jolmar_1170_home_1.jpg",
+                    "thumb": "/images/realization/jolmar/thumb/1.Jolmar_1170_home_1.jpg",
+                    "title": "Jolmar - zarządzanie nieruchomościami"
+                },
+                {
+                    "file": "/images/realization/jolmar/1.Jolmar_1170_home_11.jpg",
+                    "thumb": "/images/realization/jolmar/thumb/1.Jolmar_1170_home_11.jpg",
+                    "title": "Jolmar - zarządzanie nieruchomościami"
+                },
+                {
+                    "file": "/images/realization/jolmar/3.Jolmar_1170_onas.jpg",
+                    "thumb": "/images/realization/jolmar/thumb/3.Jolmar_1170_onas.jpg",
+                    "title": "Jolmar - zarządzanie nieruchomościami"
+                },
+                {
+                    "file": "/images/realization/jolmar/4.Jolmar_1170_oferta.jpg",
+                    "thumb": "/images/realization/jolmar/thumb/4.Jolmar_1170_oferta.jpg",
+                    "title": "Jolmar - zarządzanie nieruchomościami"
+                },
+                {
+                    "file": "/images/realization/jolmar/7.Jolmar_1170_kontakt.jpg",
+                    "thumb": "/images/realization/jolmar/thumb/7.Jolmar_1170_kontakt.jpg",
+                    "title": "Jolmar - zarządzanie nieruchomościami"
+                }
             ]
-
         ]
     }
 }
