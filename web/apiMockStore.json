@@ -1,0 +1,25 @@
+{
+    "gallery": {
+        "items": [
+            [
+                {
+                    "file": "/images/realization/poradnik-okulistyczny/PoradnikOkulistyczny_index_09.jpg",
+                    "thumb": "/images/realization/poradnik-okulistyczny/thumb/PoradnikOkulistyczny_index_09.jpg",
+                    "title": "Poradnia okulistyczna"
+                },
+                {
+                    "file": "/images/realization/poradnik-okulistyczny/PoradnikOkulistyczny_index_10.jpg",
+                    "thumb": "/images/realization/poradnik-okulistyczny/thumb/PoradnikOkulistyczny_index_10.jpg",
+                    "title": "Poradnia okulistyczna"
+                },
+                {
+                    "file": "/images/realization/poradnik-okulistyczny/PoradnikOkulistyczny_lek_02.jpg",
+                    "thumb": "/images/realization/poradnik-okulistyczny/thumb/PoradnikOkulistyczny_lek_02.jpg",
+                    "title": "Poradnia okulistyczna"
+                }
+            ]
+
+        ]
+    }
+}
+
