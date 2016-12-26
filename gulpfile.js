@@ -10,6 +10,7 @@ var gulp = require('gulp'),
         concat = require('gulp-concat');
         watch = require('gulp-watch');
         pug = require('gulp-pug');
+        minify = require('gulp-minify');
 
 //Less
 gulp.task('less', function () {
@@ -30,11 +31,14 @@ gulp.task('scripts', function() {
     return gulp.src([
           'node_modules/angular/angular.min.js',
           'node_modules/angular-route/angular-route.min.js',
+          'node_modules/jquery/dist/jquery.min.js',
+          'node_modules/lightbox2/dist/js/lightbox.min.js',
           'UI/js/app.js',
           'UI/js/config/*.js',
           'UI/js/filters/*.js',
           'UI/js/service/*.js',
-          'UI/js/controller/*.js'
+          'UI/js/controller/*.js',
+          'UI/js/directive/*.js'
         ])
         .pipe(plumber())
         .pipe(concat('app.js'))
@@ -56,7 +60,7 @@ gulp.task('pug', function() {
 gulp.task('watch', function () {
     gulp.watch('UI/less/**/*.less', ['less']);
     gulp.watch('UI/js/**/*.js', ['scripts']);
-    gulp.watch('UI/views/pages/**/*.pug', ['pug']);
+    gulp.watch('UI/views/**/**/*.pug', ['pug']);
     gulp.watch('UI/views/*.pug', ['pug']);
 });
 //Clean CSS
@@ -68,6 +72,16 @@ gulp.task('cleanCSS', ['less'], function () {
             .pipe(cleanCSS({compatibility: 'ie8'}))
             .pipe(gulp.dest('web/css'));
 });
+//Minify JS
+gulp.task('minifyJS', ['scripts'], function () {
+    gulp.src('web/js/*.js')
+            .pipe(minify({
+                ext: {
+                    min: '-min.js'
+                }
+            }))
+            .pipe(gulp.dest('web/js/dist'))
+});
 // define tasks here
 gulp.task('default', ['less', 'scripts', 'pug', 'watch']);
-gulp.task('build', ['cleanCSS', 'scripts', 'pug']);
+gulp.task('build', ['cleanCSS', 'minifyJS', 'pug']);
