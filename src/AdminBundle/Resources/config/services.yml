@@ -1,6 +1,14 @@
 services:
     admin.admin.gallery:
         class: AdminBundle\Admin\GalleryAdmin
-        arguments: [~, AdminBundle\Entity\Gallery, SonataAdminBundle:CRUD]
+        arguments: [~, AdminBundle\Entity\Gallery, 'PixSortableBehaviorBundle:SortableAdmin']
         tags:
             - { name: sonata.admin, manager_type: orm, group: Media, label: Gallery }
+        calls:
+            - [ setPositionService, ["@pix_sortable_behavior.position"]]
+
+    admin.admin.image:
+        class: AdminBundle\Admin\ImageAdmin
+        arguments: [~, AdminBundle\Entity\Image, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Media, label: Image }
