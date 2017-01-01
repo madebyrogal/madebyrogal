@@ -1,0 +1,6 @@
+services:
+    admin.admin.gallery:
+        class: AdminBundle\Admin\GalleryAdmin
+        arguments: [~, AdminBundle\Entity\Gallery, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Media, label: Gallery }
