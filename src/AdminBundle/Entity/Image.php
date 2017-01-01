@@ -96,7 +96,7 @@ class Image
      *
      * @return Image
      */
-    public function setFile($file)
+    public function setFile(\Symfony\Component\HttpFoundation\File\UploadedFile $file = null)
     {
         $this->file = $file;
 
@@ -116,25 +116,25 @@ class Image
     /**
      * Set thum1
      *
-     * @param string $thum1
+     * @param string $thumb1
      *
      * @return Image
      */
-    public function setThum1($thum1)
+    public function setThum1(\Symfony\Component\HttpFoundation\File\UploadedFile $thumb1 = null)
     {
-        $this->thum1 = $thum1;
+        $this->thumb1 = $thumb1;
 
         return $this;
     }
 
     /**
-     * Get thum1
+     * Get thumb1
      *
      * @return string
      */
-    public function getThum1()
+    public function getThumb1()
     {
-        return $this->thum1;
+        return $this->thumb1;
     }
 
     /**
@@ -185,29 +185,6 @@ class Image
         return $this->name;
     }
 
-    /**
-     * Set thumb1
-     *
-     * @param string $thumb1
-     *
-     * @return Image
-     */
-    public function setThumb1($thumb1)
-    {
-        $this->thumb1 = $thumb1;
-
-        return $this;
-    }
-
-    /**
-     * Get thumb1
-     *
-     * @return string
-     */
-    public function getThumb1()
-    {
-        return $this->thumb1;
-    }
 
     /**
      * Set gallery
@@ -305,4 +282,29 @@ class Image
     {
         return $this->position;
     }
+    
+    /**
+     * Upload file
+     * @return 
+     */
+    public function uploadFile() {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // we use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+        // move takes the target directory and target filename as params
+        $this->getFile()->move(
+                self::SERVER_PATH_TO_IMAGE_FOLDER, $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->filename = $this->getFile()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->setFile(null);
+    }
+
 }

@@ -40,7 +40,6 @@ class ImageAdmin extends AbstractAdmin
             ->add('name')
             ->add('created')
             ->add('updated')
-            ->add('position')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -57,9 +56,9 @@ class ImageAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file')
-            ->add('thumb1')
-            ->add('orginName')
+            ->add('file', 'file')
+            ->add('thumb1', 'file', ['help' => 'If you leave this field empty, admin generate default thumbnails for file', 'required' => false])
+            ->add('orginName', null, ['help' => 'If you leave this field empty, admin save name orginal file name'])
             ->add('name')
         ;
     }
