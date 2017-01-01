@@ -3,6 +3,7 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Image
@@ -48,6 +49,22 @@ class Image
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
+    
+    /**
+     * @var \DateTime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+    
+    /**
+     * @var \DateTime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
     
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="images")
@@ -209,4 +226,53 @@ class Image
     {
         return $this->gallery;
     }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Image
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Image
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
 }
