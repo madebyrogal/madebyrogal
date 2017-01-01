@@ -57,6 +57,7 @@ class GalleryAdmin extends AbstractAdmin {
         $showMapper
                 ->add('id')
                 ->add('name')
+                ->add('position')
                 ->add('created')
                 ->add('updated')
         ;

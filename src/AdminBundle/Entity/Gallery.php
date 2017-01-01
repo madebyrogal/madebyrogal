@@ -46,6 +46,12 @@ class Gallery
     private $updated;
     
     /**
+     * @Gedmo\SortablePosition
+     * @ORM\Column(type="integer")
+     */
+    private $position;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Image", mappedBy="gallery")
      */
     private $images;
@@ -172,5 +178,29 @@ class Gallery
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     *
+     * @return Gallery
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

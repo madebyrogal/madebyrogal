@@ -67,6 +67,12 @@ class Image
     private $updated;
     
     /**
+     * @Gedmo\SortablePosition
+     * @ORM\Column(type="integer")
+     */
+    private $position;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="images")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -275,4 +281,28 @@ class Image
         return $this->updated;
     }
 
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     *
+     * @return Image
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
 }
