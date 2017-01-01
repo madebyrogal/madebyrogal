@@ -44,6 +44,11 @@ class Gallery
      * @ORM\Column(type="datetime")
      */
     private $updated;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="gallery")
+     */
+    private $images;
 
 
     /**
@@ -126,5 +131,46 @@ class Gallery
     public function getUpdated()
     {
         return $this->updated;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add image
+     *
+     * @param \AdminBundle\Entity\Image $image
+     *
+     * @return Gallery
+     */
+    public function addImage(\AdminBundle\Entity\Image $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \AdminBundle\Entity\Image $image
+     */
+    public function removeImage(\AdminBundle\Entity\Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }
