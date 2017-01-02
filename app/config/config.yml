@@ -83,3 +83,4 @@ sonata_block:
 
 sonata_admin:
     title: 'MadeByRogal'
+    title_logo: bundles/admin/images/logo.png
