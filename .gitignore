@@ -17,13 +17,15 @@
 /web/js/
 /web/pages/
 /web/directives/
+/web/bundles/
 
 # VENDORS
 /vendor/
 /node_modules/
 
-# BUNDLES
-/web/bundles/
+# UPLOADS
+/web/uploads/*
+!web/uploads/.gitkeep
 
 # OTHERS
 /nbproject

@@ -10,9 +10,15 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\ImageRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Image
 {
+    /**
+     * Directory for images
+     */
+    const UPLOAD_DIR = 'uploads/images';
+    
     /**
      * @var int
      *
@@ -23,18 +29,16 @@ class Image
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="file", type="text")
+     * Unmapped property to handle file uploads
      */
     private $file;
-
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="thumb1", type="text", nullable=true)
+     * @ORM\Column(name="filename", type="text")
      */
-    private $thumb1;
+    private $filename;
 
     /**
      * @var string
@@ -92,7 +96,7 @@ class Image
     /**
      * Set file
      *
-     * @param string $file
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
      *
      * @return Image
      */
@@ -106,35 +110,35 @@ class Image
     /**
      * Get file
      *
-     * @return string
+     * @return \Symfony\Component\HttpFoundation\File\UploadedFile
      */
     public function getFile()
     {
         return $this->file;
     }
-
+    
     /**
-     * Set thum1
+     * Set filename
      *
-     * @param string $thumb1
+     * @param string $filename
      *
      * @return Image
      */
-    public function setThum1(\Symfony\Component\HttpFoundation\File\UploadedFile $thumb1 = null)
+    public function setFilename($filename)
     {
-        $this->thumb1 = $thumb1;
+        $this->filename = $filename;
 
         return $this;
     }
 
     /**
-     * Get thumb1
+     * Get filename
      *
      * @return string
      */
-    public function getThumb1()
+    public function getFilename()
     {
-        return $this->thumb1;
+        return $this->filename;
     }
 
     /**
@@ -284,27 +288,53 @@ class Image
     }
     
     /**
+     * @ORM\PrePersist
+     * @ORM\PostUpdate
      * Upload file
-     * @return 
+     * @return mix File on success, false on failure 
      */
     public function uploadFile() {
-        // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
-            return;
+            
+            return false;
         }
-
-        // we use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-        // move takes the target directory and target filename as params
-        $this->getFile()->move(
-                self::SERVER_PATH_TO_IMAGE_FOLDER, $this->getFile()->getClientOriginalName()
-        );
-
-        // set the path property to the filename where you've saved the file
-        $this->filename = $this->getFile()->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
+        do {
+            $hashFileName = uniqid(pathinfo($this->getFile()->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $this->getFile()->getClientOriginalExtension();
+        } while (file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $hashFileName));
+        if(boolval($file = $this->getFile()->move(self::UPLOAD_DIR, $hashFileName))) {
+            $this->setFilename($hashFileName);
+            if(!$this->getOrginName()) {
+                $this->setOrginName($this->getFile()->getClientOriginalName());
+            }
+        }
         $this->setFile(null);
+        
+        return $file;
+    }
+    
+    /**
+     * Update file (remove old one) 
+     */
+    public function uploadFileUpdate()
+    {
+        dump('Upload');die;
+        $oldFileName = $this->getFileName();
+        if ($this->uploadFile() && file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $oldFileName)) {
+            unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $oldFileName);
+        }
+        
+    }
+
+    /**
+     * @ORM\PostRemove
+     * Remove file (clean operation)
+     */
+    public function removeFile()
+    {
+        $fileToRemove = $this->getFileName();
+        if (file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $fileToRemove)) {
+            unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $fileToRemove);
+        }
     }
 
 }

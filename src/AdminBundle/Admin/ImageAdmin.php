@@ -17,8 +17,7 @@ class ImageAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('file')
-            ->add('thumb1')
+            ->add('filename')
             ->add('orginName')
             ->add('name')
             ->add('created')
@@ -34,8 +33,7 @@ class ImageAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('file')
-            ->add('thumb1')
+            ->add('filename')
             ->add('orginName')
             ->add('name')
             ->add('created')
@@ -56,8 +54,7 @@ class ImageAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'file')
-            ->add('thumb1', 'file', ['help' => 'If you leave this field empty, admin generate default thumbnails for file', 'required' => false])
+            ->add('file', 'file', ['required' => false])
             ->add('orginName', null, ['help' => 'If you leave this field empty, admin save name orginal file name'])
             ->add('name')
         ;
@@ -70,8 +67,7 @@ class ImageAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('file')
-            ->add('thumb1')
+            ->add('filename')
             ->add('orginName')
             ->add('name')
             ->add('created')

@@ -7,10 +7,11 @@
 ============
 
 ## Run 
-```sh install.sh```   
+- ```sh install.sh```   
 
-## Change permission to cache and log:
- ```sh fixperms```
+## Change permission to cache, log and uploads:
+- ```sh fixperms```
+- ```chmod -R 644 uploads ```
 
 ## Build assets - run gulp
-```gulp build```
+- ```gulp build```
