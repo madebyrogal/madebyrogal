@@ -103,6 +103,9 @@ class Image
     public function setFile(\Symfony\Component\HttpFoundation\File\UploadedFile $file = null)
     {
         $this->file = $file;
+        if (!empty($this->getFilename())) {
+            $this->oldFileName = $this->getFilename();
+        }
 
         return $this;
     }
@@ -289,40 +292,38 @@ class Image
     
     /**
      * @ORM\PrePersist
-     * @ORM\PostUpdate
+     * @ORM\PreUpdate
      * Upload file
-     * @return mix File on success, false on failure 
      */
-    public function uploadFile() {
-        if (null === $this->getFile()) {
-            
-            return false;
-        }
-        do {
-            $hashFileName = uniqid(pathinfo($this->getFile()->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $this->getFile()->getClientOriginalExtension();
-        } while (file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $hashFileName));
-        if(boolval($file = $this->getFile()->move(self::UPLOAD_DIR, $hashFileName))) {
-            $this->setFilename($hashFileName);
+    public function preUpload() 
+    {
+        
+        if (null !== $this->getFile()) {
+            do {
+                $hashFileName = uniqid(pathinfo($this->getFile()->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $this->getFile()->getClientOriginalExtension();
+            } while (file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $hashFileName));
+            $this->filename = $hashFileName;
             if(!$this->getOrginName()) {
-                $this->setOrginName($this->getFile()->getClientOriginalName());
+                $this->orginName = $this->getFile()->getClientOriginalName();
             }
         }
-        $this->setFile(null);
-        
-        return $file;
     }
     
     /**
-     * Update file (remove old one) 
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     * Update file and remove old if was before 
      */
-    public function uploadFileUpdate()
+    public function upload()
     {
-        dump('Upload');die;
-        $oldFileName = $this->getFileName();
-        if ($this->uploadFile() && file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $oldFileName)) {
-            unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $oldFileName);
+        if ($this->getFile()) {
+            $this->getFile()->move(self::UPLOAD_DIR, $this->getFilename());
         }
-        
+        if (isset($this->oldFileName)) {
+            unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->oldFileName);
+            $this->oldFileName = null;
+        }
+        $this->file = null;
     }
 
     /**
@@ -331,9 +332,8 @@ class Image
      */
     public function removeFile()
     {
-        $fileToRemove = $this->getFileName();
-        if (file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $fileToRemove)) {
-            unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $fileToRemove);
+        if (file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->getFileName())) {
+            unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->getFileName());
         }
     }
 
