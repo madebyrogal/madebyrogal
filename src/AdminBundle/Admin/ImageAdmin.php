@@ -20,6 +20,7 @@ class ImageAdmin extends AbstractAdmin
             ->add('filename')
             ->add('orginName')
             ->add('name')
+            ->add('gallery')
             ->add('created')
             ->add('updated')
             ->add('position')
@@ -36,8 +37,7 @@ class ImageAdmin extends AbstractAdmin
             ->add('filename')
             ->add('orginName')
             ->add('name')
-            ->add('created')
-            ->add('updated')
+            ->add('gallery')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -57,6 +57,7 @@ class ImageAdmin extends AbstractAdmin
             ->add('file', 'file', ['required' => false])
             ->add('orginName', null, ['help' => 'If you leave this field empty, admin save name orginal file name'])
             ->add('name')
+            ->add('gallery', 'sonata_type_model', ['placeholder' => 'No gallery selected', 'required' => false])
         ;
     }
 
@@ -70,6 +71,7 @@ class ImageAdmin extends AbstractAdmin
             ->add('filename')
             ->add('orginName')
             ->add('name')
+            ->add('gallery')
             ->add('created')
             ->add('updated')
             ->add('position')
