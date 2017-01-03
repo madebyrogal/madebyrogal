@@ -336,5 +336,14 @@ class Image
             unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->getFileName());
         }
     }
+    
+    /**
+     * Get path to file
+     * @return string
+     */
+    public function getFilePath()
+    {
+        return self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->getFilename();
+    }
 
 }

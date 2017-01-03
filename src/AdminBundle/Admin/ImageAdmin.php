@@ -17,7 +17,6 @@ class ImageAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('filename')
             ->add('orginName')
             ->add('name')
             ->add('gallery')
@@ -34,7 +33,7 @@ class ImageAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('filename')
+            ->add('filename', null, ['label' => 'Image', 'template' => 'AdminBundle:Default:_image_list_thumb.html.twig'])
             ->add('orginName')
             ->add('name')
             ->add('gallery')
@@ -68,7 +67,7 @@ class ImageAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('filename')
+            ->add('filename', null, ['label' => 'Image', 'template' => 'AdminBundle:Default:_image_show_thumb.html.twig'])
             ->add('orginName')
             ->add('name')
             ->add('gallery')
