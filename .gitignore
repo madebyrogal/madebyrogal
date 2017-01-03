@@ -26,6 +26,8 @@
 # UPLOADS
 /web/uploads/*
 !web/uploads/.gitkeep
+/web/media/*
+!web/media/.gitkeep
 
 # OTHERS
 /nbproject
