@@ -320,7 +320,9 @@ class Image
             $this->getFile()->move(self::UPLOAD_DIR, $this->getFilename());
         }
         if (isset($this->oldFileName)) {
-            unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->oldFileName);
+            if (file_exists(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->oldFileName)) {
+                unlink(self::UPLOAD_DIR . DIRECTORY_SEPARATOR . $this->oldFileName);
+            }
             $this->oldFileName = null;
         }
         $this->file = null;
