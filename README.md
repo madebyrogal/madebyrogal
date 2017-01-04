@@ -9,9 +9,8 @@
 ## Run 
 - ```sh install.sh```   
 
-## Change permission to cache, log and uploads:
+## Change permission to directories:
 - ```sh fixperms```
-- ```chmod -R 644 uploads ```
 
 ## Build assets - run gulp
 - ```gulp build```

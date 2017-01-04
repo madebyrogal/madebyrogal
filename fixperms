@@ -1,5 +1,38 @@
 #!/bin/bash
+unamestr=`uname`
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 
-HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
-sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
-sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
+if [[ "$unamestr" == 'Linux' ]]; then
+    #Linux
+    HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+    sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
+    sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
+
+    sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads
+    sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads
+
+    sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/media
+    sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/media
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    #macOSX
+    rm -rf var/cache/*
+    rm -rf var/logs/*
+    rm -rf web/uploads/*
+    rm -rf web/media/*
+
+    HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+    sudo chmod -R +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" var
+    sudo chmod -R +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" var
+
+    sudo chmod -R +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" web/uploads
+    sudo chmod -R +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" web/uploads
+
+    sudo chmod -R +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" web/media
+    sudo chmod -R +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" web/media
+else
+    echo "${RED}Can't set permission unknown system${NC}"
+    exit 1
+fi
+
+
