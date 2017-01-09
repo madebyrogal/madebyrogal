@@ -10,4 +10,14 @@ namespace AdminBundle\Repository;
  */
 class GalleryRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    /**
+     * Get galleries
+     * @param type $limit
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGallery($limit = 0) 
+    {
+        return $this->findBy([], ['position' => 'ASC'], $limit);
+    }
 }
